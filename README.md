@@ -1,8 +1,24 @@
+STARTED PROJECT
+
+===============================================================================
+
+1. Clone Project on github
+2. Install Package Project (npm install)
+3. Run Project
+
+SET UP PROJECT
+
+===============================================================================
+
 1. install package :
 
 - express
 - knex
 - handlebars
+- argon2
+- pg
+- moment
+- dotenv
 
 2. struktur folder
 
@@ -17,6 +33,13 @@
 - npx knex seed:make table => untuk mengisi data secara ototmatis
 - npx knex seed:run => untuk menjalankan proses pengisian data
 
-4. create api room
+4. API
 
-5. create api booking
+===============================================================================
+a users
+
+- create user = POST http://localhost:5000/user-create
+- get all user = GET http://localhost:5000/user-all
+- get detail user = GET http://localhost:5000/user-detail/id
+- update user = PUT http://localhost:5000/user-update/id
+- delete user = DELETE http://localhost:5000/user-delete/id

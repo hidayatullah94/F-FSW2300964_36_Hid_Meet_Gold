@@ -4,11 +4,10 @@ const port = process.env.PORT;
 const app = express();
 const { engine } = require("express-handlebars");
 const path = require("path");
-const userRoute = require("./routes/Users");
 const roomRoute = require("./routes/Room");
 const mainRoute = require("./routes/Main");
-const db = require("./db");
 const bookingRoute = require("./routes/Booking");
+const userRoute = require("./routes/Users");
 //midleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -30,6 +29,7 @@ app.use(mainRoute);
 //route
 app.use(roomRoute);
 app.use(bookingRoute);
+app.use(userRoute);
 
 //listen
 app.listen(port, () => {
