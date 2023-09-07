@@ -5,40 +5,44 @@ const moment = require("moment");
 //! create booking
 const createBooking = async (req = request, res = response) => {
   try {
-    const { title, description, ruang, start, end, create } = await req.body;
+    const { title, description, room, start, end, created } = await req.body;
     const starts = moment(start).format("YYYY-MM-DD HH:mm:ss");
     const ends = moment(end).format("YYYY-MM-DD HH:mm:ss");
+    //chek data agar tidak duplikat
+    const findBooking = await db("bookings")
+      .where("room", room)
+      .where("start", starts);
 
-    const findData =
-      await conn.$queryRaw`SELECT * FROM booking WHERE ruang_id =${ruang_id}
-         
-       AND status_booking="Disetujui" AND mulai= ${start}`;
-
-    const findBooking = await db("bookings").where("room", )
-
-    const createData = await db("bookings")
-      .insert({
-        title: title,
-        description: description,
-        ruang: ruang,
-        start: starts,
-        end: ends,
-        create: create,
-      })
-      .returning([
-        "bookingID",
-        "title",
-        "description",
-        "ruang",
-        "start",
-        "end",
-        "create",
-      ]);
-    res.status(201).json({
-      succes: true,
-      message: "data berhasil dibuat",
-      query: createData,
-    });
+    if (findBooking.length) {
+      return res.status(400).json({
+        succes: false,
+        message: "data sudah ada",
+      });
+    } else {
+      const createData = await db("bookings")
+        .insert({
+          title: title,
+          description: description,
+          room: room,
+          start: starts,
+          end: ends,
+          created: created === "" ? "ADMIN" : created,
+        })
+        .returning([
+          "bookingID",
+          "title",
+          "description",
+          "room",
+          "start",
+          "end",
+          "created",
+        ]);
+      res.status(201).json({
+        succes: true,
+        message: "data berhasil dibuat",
+        query: createData,
+      });
+    }
   } catch (error) {
     res.status(500).json({
       succes: false,
@@ -47,7 +51,7 @@ const createBooking = async (req = request, res = response) => {
   }
 };
 
-// getdetail
+// getdetail booking
 const getDetailBooking = async (req = request, res = response) => {
   try {
     const { id } = await req.params;
@@ -65,4 +69,75 @@ const getDetailBooking = async (req = request, res = response) => {
   }
 };
 
-module.exports = { createBooking, getDetailBooking };
+//get all booking
+const getAllBookings = async (req = request, res = response) => {
+  try {
+    const getData = await db("bookings").orderBy("createdAt", "desc");
+    res.status(200).json({
+      succes: true,
+      message: "data berhasil ditampilkan",
+      query: getData,
+    });
+  } catch (error) {
+    res.status(500).json({
+      succes: false,
+      error: error.message,
+    });
+  }
+};
+
+//? update booking
+const updateBooking = async (req = request, res = response) => {
+  try {
+    const { id } = await req.params;
+    const { title, description, room, start, end, created } = await req.body;
+    const starts = moment(start).format("YYYY-MM-DD HH:mm:ss");
+    const ends = moment(end).format("YYYY-MM-DD HH:mm:ss");
+
+    const updateData = await db("bookings")
+      .where("bookingID", id)
+      .update({
+        title: title,
+        description: description,
+        room: room,
+        start: starts,
+        end: ends,
+        created: created,
+      })
+      .returning(["title", "description", "room", "start", "end", "created"]);
+    res.status(201).json({
+      succes: true,
+      message: "data berhasil diupdate",
+      query: updateData,
+    });
+  } catch (error) {
+    res.status(500).json({
+      succes: false,
+      error: error.message,
+    });
+  }
+};
+
+//! delete booking
+const deleteBooking = async (req = request, res = response) => {
+  try {
+    const { id } = await req.params;
+    const deleteData = await db("bookings").where("bookingID", id).del();
+    res.status(201).json({
+      succes: true,
+      message: "data berhasil dihapus",
+    });
+  } catch (error) {
+    res.status(500).json({
+      succes: false,
+      error: error.message,
+    });
+  }
+};
+module.exports = {
+  createBooking,
+  getDetailBooking,
+  getAllBookings,
+  updateBooking,
+  deleteBooking,
+};
