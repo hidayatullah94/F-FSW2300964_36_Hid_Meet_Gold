@@ -8,6 +8,9 @@ const roomRoute = require("./routes/Room");
 const mainRoute = require("./routes/Main");
 const bookingRoute = require("./routes/Booking");
 const userRoute = require("./routes/Users");
+const Handlebars = require("handlebars");
+const MomentHandler = require("handlebars.moment");
+MomentHandler.registerHelpers(Handlebars);
 //midleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));

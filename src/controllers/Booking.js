@@ -134,10 +134,32 @@ const deleteBooking = async (req = request, res = response) => {
     });
   }
 };
+
+//daily booking
+const getDailyBooking = async (req = request, res = response) => {
+  try {
+    const start = new Date();
+    start.setUTCHours(0, 0, 0, 0);
+    const end = new Date();
+    end.setUTCHours(23, 59, 59, 999);
+    const getData = await db("bookings").whereBetween("start", [start, end]);
+    res.status(200).json({
+      succes: true,
+      message: "data berhasil ditampilkan",
+      query: getData,
+    });
+  } catch (error) {
+    res.status(500).json({
+      succes: false,
+      error: error.message,
+    });
+  }
+};
 module.exports = {
   createBooking,
   getDetailBooking,
   getAllBookings,
   updateBooking,
   deleteBooking,
+  getDailyBooking,
 };

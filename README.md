@@ -19,6 +19,7 @@ SET UP PROJECT
 - pg
 - moment
 - dotenv
+- axios
 
 2. struktur folder
 

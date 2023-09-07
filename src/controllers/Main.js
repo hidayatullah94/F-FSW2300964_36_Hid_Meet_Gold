@@ -1,8 +1,17 @@
+const { default: axios } = require("axios");
 const { request, response } = require("express");
 
 //home page
 const home = async (req = request, res = response) => {
-  res.render("../views/index.handlebars");
+  axios
+    .get("http://localhost:5000/booking-daily")
+    .then((response) => {
+      const data = response.data.query;
+      res.render("../views/index.handlebars", { data });
+    })
+    .catch((err) => {
+      console.error(err);
+    });
 };
 
 //create forms rooms

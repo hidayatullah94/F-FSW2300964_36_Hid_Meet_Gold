@@ -1,39 +1,48 @@
-<nav class="navbar navbar-expand-lg bg-info fixed-top" data-bs-theme="white">
+<main class="w-100 min-vh-100 mt-5 position-relative" style="top:15px">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">- Meet</a>
-    <button
-      class="navbar-toggler"
-      type="button"
-      data-bs-toggle="collapse"
-      data-bs-target="#navbarTogglerDemo02"
-      aria-controls="navbarTogglerDemo02"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-    >
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="/">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/booking">Booking</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/room">Room</a>
-        </li>
-
-      </ul>
-      <form class="d-flex" role="search">
-        <input
-          class="form-control me-2"
-          type="search"
-          placeholder="Search"
-          aria-label="Search"
-        />
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
-    </div>
+    <nav style=" --bs-breadcrumb-divider: '>'; " aria-label="breadcrumb">
+      <ol class="breadcrumb w-100 border-bottom pb-3">
+        <li class="breadcrumb-item">Home</li>
+        <li
+          class="breadcrumb-item active text-capitalize"
+          aria-current="page"
+        >daily booking</li>
+      </ol>
+    </nav>
   </div>
-</nav>
+  <div class="container d-flex justify-content-evenly flex-wrap">
+
+    {{#each data}}
+      <div class="card text-center my-5" style="width: 24rem;">
+        <div class="card-header">
+          MT-{{bookingID}}
+        </div>
+        <div class="card-body d-flex justify-content-between">
+          <div class="left d-flex align-items-start flex-column">
+            <h6 class="card-title">Title </h6>
+            <p class="card-text text-capitalize">description </p>
+            <p class="card-text text-capitalize">room </p>
+            <p class="card-text text-capitalize">start </p>
+            <p class="card-text text-capitalize">end </p>
+            <p class="card-text text-capitalize">completed </p>
+          </div>
+          <div class="right d-flex align-items-start flex-column">
+            <h6 class="card-title">: {{title}}</h6>
+            <p class="card-text text-capitalize">: {{description}}</p>
+            <p class="card-text text-capitalize">: {{room}}</p>
+            <p class="card-text text-capitalize">:
+              {{moment start format="DD-MM-YYYY | HH:mm"}}</p>
+            <p class="card-text text-capitalize">:
+              {{moment end format="DD-MM-YYYY | HH:mm"}}</p>
+            <p>{{#if isCompleted}} Done {{else}} Not Done {{/if}}</p>
+
+          </div>
+
+        </div>
+        <div class="card-footer text-body-secondary">
+          {{created}}
+        </div>
+      </div>
+    {{/each}}
+  </div>
+</main>
