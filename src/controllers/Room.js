@@ -6,6 +6,12 @@ const createRoom = async (req = request, res = response) => {
   try {
     const { name, capacity, facility, created } = await req.body;
     const findData = await db("rooms").select("name").where("name", name);
+    if (!name) {
+      return res.status(411).json({
+        succes: false,
+        message: "field harus di isi",
+      });
+    }
 
     if (findData.length) {
       return res.status(400).json({
@@ -18,7 +24,7 @@ const createRoom = async (req = request, res = response) => {
           name,
           capacity,
           facility,
-          created: created === "" ? "noname" : created,
+          created: created === "" ? "ADMIN" : created,
         })
         .returning(["name", "capacity", "facility", "created"]);
       res.status(201).json({
