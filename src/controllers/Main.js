@@ -13,7 +13,6 @@ const home = async (req = request, res = response) => {
       console.error(err);
     });
 };
-
 //all booking
 const bookings = async (req = request, res = response) => {
   axios
@@ -26,7 +25,6 @@ const bookings = async (req = request, res = response) => {
       console.error(err);
     });
 };
-
 //create booking
 const createBooking = async (req = request, res = response) => {
   axios
@@ -51,9 +49,35 @@ const rooms = async (req = request, res = response) => {
       console.error(err);
     });
 };
-//create forms rooms
+//create rooms
 const createRoom = async (req = request, res = response) => {
   res.render("../views/component/FormRoom.handlebars");
 };
+//all user
+const users = async (req = request, res = response) => {
+  axios
+    .get("http://localhost:5000/user-all")
+    .then((response) => {
+      const data = response.data.query;
+      res.render("../views/component/Users.handlebars", { data });
+    })
+    .catch((err) => {
+      console.error(err);
+    });
+};
+//create user
+const createUser = async (req = request, res = response) => {
+  res.render("../views/component/FormUser.handlebars");
+};
 
-module.exports = { home, rooms, createRoom, bookings, createBooking };
+
+module.exports = {
+  home,
+  rooms,
+  createRoom,
+  bookings,
+  createBooking,
+  users,
+  createUser,
+
+};

@@ -1,4 +1,7 @@
-<main class="w-100 min-vh-100 mt-5 position-relative" style="top:15px">
+<main
+  class="min-vh-100 mt-5 position-relative container-fluid"
+  style="top:15px"
+>
   <div class="container-fluid">
     <nav style=" --bs-breadcrumb-divider: '>'; " aria-label="breadcrumb">
       <ol class="breadcrumb w-100 border-bottom pb-3">
@@ -6,7 +9,7 @@
         <li
           class="breadcrumb-item active text-capitalize"
           aria-current="page"
-        >all booking</li>
+        >List booking</li>
       </ol>
     </nav>
   </div>
@@ -17,8 +20,8 @@
       href="/createBooking"
     >Create</a>
   </div>
-  <div class="container-fluid table-responsive mb-4" style="font-size: 13px;">
-    <table class="table table-bordered table-hover table-striped">
+  <div class="container-fluid table-responsive" style="font-size: 13px;">
+    <table class="table table-bordered table-hover mb-4">
       <thead>
         <tr>
           <th scope="col">ID</th>
@@ -51,19 +54,19 @@
         </tbody>
       {{/each}}
     </table>
+    <nav aria-label="Page navigation">
+      <ul class="pagination justify-content-center">
+        <li class="page-item">
+          <a class="page-link">Previous</a>
+        </li>
+        <li class="page-item"><a class="page-link" href="#">1</a></li>
+        <li class="page-item active"><a class="page-link" href="#">2</a></li>
+        <li class="page-item"><a class="page-link" href="#">3</a></li>
+        <li class="page-item">
+          <a class="page-link" href="#">Next</a>
+        </li>
+      </ul>
+    </nav>
   </div>
-  <nav aria-label="Page navigation">
-    <ul class="pagination justify-content-center">
-      <li class="page-item">
-        <a class="page-link">Previous</a>
-      </li>
-      <li class="page-item"><a class="page-link" href="#">1</a></li>
-      <li class="page-item active"><a class="page-link" href="#">2</a></li>
-      <li class="page-item"><a class="page-link" href="#">3</a></li>
-      <li class="page-item">
-        <a class="page-link" href="#">Next</a>
-      </li>
-    </ul>
-  </nav>
 
 </main>

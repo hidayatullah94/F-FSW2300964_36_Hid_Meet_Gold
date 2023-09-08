@@ -1,12 +1,15 @@
-<main class="container-fluid min-vh-100 mt-5 position-relative" style="top:15px">
+<main
+  class="container-fluid min-vh-100 mt-5 position-relative"
+  style="top:15px"
+>
   <div class="container-fluid">
     <nav style=" --bs-breadcrumb-divider: '>'; " aria-label="breadcrumb">
       <ol class="breadcrumb w-100 border-bottom pb-3">
-        <li class="breadcrumb-item">Room</li>
+        <li class="breadcrumb-item">User</li>
         <li
           class="breadcrumb-item active text-capitalize"
           aria-current="page"
-        >List room</li>
+        >List user</li>
       </ol>
     </nav>
   </div>
@@ -14,33 +17,35 @@
     <a
       class="btn text-white px-5 rounded-pill fw-bold"
       style="background-color: #0099ff;"
-      href="/createRoom"
+      href="/createUser"
     >Create</a>
   </div>
   <div class="container-fluid d-flex justify-content-evenly flex-wrap me-5">
     {{#if data}}
       {{#each data}}
-        <div class="card text-center mt-4 mb-5 me-md-5" style="width: 24rem;">
+        <div class="card text-center mb-5 mt-4 me-md-5" style="width: 24rem;">
           <div class="card-header">
-            RM-{{roomID}}
+            UR-{{userId}}
           </div>
           <div class="card-body d-flex justify-content-between">
             <div class="left d-flex align-items-start flex-column">
-              <h6 class="card-title text-capitalize">name </h6>
-              <p class="card-text text-capitalize">capacity </p>
-              <p class="card-text text-capitalize">facility </p>
+              <h6 class="card-title text-capitalize">nip </h6>
+              <p class="card-text text-capitalize">name </p>
+              <p class="card-text text-capitalize">email </p>
+              <p class="card-text text-capitalize">divisi </p>
             </div>
             <div class="right d-flex align-items-start flex-column">
-              <h6 class="card-title">: {{name}}</h6>
-              <p class="card-text text-capitalize">: {{capacity}}</p>
-              <p class="card-text text-capitalize">: {{facility}}</p>
+              <h6 class="card-title">: {{nip}}</h6>
+              <p class="card-text text-capitalize">: {{name}}</p>
+              <p class="card-text text-capitalize">: {{email}}</p>
+              <p class="card-text text-capitalize">: {{divisi}}</p>
             </div>
           </div>
 
         </div>
       {{/each}}
     {{else}}
-      <h5 class="mt-5 text-center">Sorry ROOM not yet available! !</h5>
+      <h5 class="mt-5 text-center">Sorry USER not yet available!</h5>
     {{/if}}
 
   </div>

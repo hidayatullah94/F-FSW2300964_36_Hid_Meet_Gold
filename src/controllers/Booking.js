@@ -8,6 +8,7 @@ const createBooking = async (req = request, res = response) => {
     const { title, description, room, start, end, created } = await req.body;
     const starts = moment(start).format("YYYY-MM-DD HH:mm:ss");
     const ends = moment(end).format("YYYY-MM-DD HH:mm:ss");
+
     //chek data agar tidak duplikat
     const findBooking = await db("bookings")
       .where("room", room)
@@ -142,6 +143,7 @@ const getDailyBooking = async (req = request, res = response) => {
     start.setUTCHours(0, 0, 0, 0);
     const end = new Date();
     end.setUTCHours(23, 59, 59, 999);
+
     const getData = await db("bookings").whereBetween("start", [start, end]);
     res.status(200).json({
       succes: true,

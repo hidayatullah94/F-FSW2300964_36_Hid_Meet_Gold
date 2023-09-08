@@ -11,6 +11,7 @@ const userRoute = require("./routes/Users");
 const Handlebars = require("handlebars");
 const MomentHandler = require("handlebars.moment");
 MomentHandler.registerHelpers(Handlebars);
+
 //midleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));

@@ -1,0 +1,89 @@
+<main class="container-fluid min-vh-100 mt-5 position-relative" style="top:15px">
+  <div class="container-fluid">
+    <nav style=" --bs-breadcrumb-divider: '>'; " aria-label="breadcrumb">
+      <ol class="breadcrumb w-100 border-bottom pb-3">
+        <li class="breadcrumb-item">User</li>
+        <li
+          class="breadcrumb-item active text-capitalize"
+          aria-current="page"
+        >Create user</li>
+      </ol>
+    </nav>
+  </div>
+  <div class="container my-4 d-flex justify-content-start">
+    <a
+      class="btn text-white px-5 rounded-pill fw-bold"
+      style="background-color: #0099ff;"
+      onclick="history.back()"
+    >Back</a>
+  </div>
+  <div class="container">
+    <div class="card px-5 py-5">
+      <form>
+        <div class="mb-3">
+          <label for="name" class="form-label text-capitalize">name user</label>
+          <input
+            type="text"
+            class="form-control rounded-pill"
+            id="name"
+            aria-describedby="name"
+            required="true"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="nip" class="form-label text-capitalize">NIP user</label>
+          <input
+            type="number"
+            class="form-control rounded-pill"
+            id="nip"
+            aria-describedby="nip"
+            required="true"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="capacity" class="form-label text-capitalize">divisi user</label>
+          <select
+            class="form-select rounded-pill"
+            aria-label="Default select example"
+            required="true"
+          >
+            <option selected disabled>Choose divisi</option>
+            <option value="IT">IT</option>
+            <option value="OPERATIONAL">OPERATIONAL</option>
+            <option value="FINANCE">FINANCE</option>
+            <option value="LEGAL">LEGAL</option>
+            <option value="GA">GA</option>
+            <option value="MARKETING">MARKETING</option>
+
+          </select>
+        </div>
+        <div class="mb-3">
+          <label for="email" class="form-label text-capitalize">email user</label>
+          <input
+            type="email"
+            class="form-control rounded-pill"
+            id="email"
+            aria-describedby="email"
+            required="true"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="password" class="form-label text-capitalize">password user</label>
+          <input
+            type="password"
+            class="form-control rounded-pill"
+            id="password"
+            aria-describedby="password"
+            required="true"
+          />
+        </div>
+        <button
+          class="btn text-white px-5 rounded-pill fw-bold w-100 mt-4"
+          style="background-color: #0099ff;"
+          type="Submit"
+        >Submit</button>
+
+      </form>
+    </div>
+  </div>
+</main>
