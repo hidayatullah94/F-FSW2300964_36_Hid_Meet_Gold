@@ -1,0 +1,47 @@
+<main class="w-100 min-vh-100 mt-5 position-relative" style="top:15px">
+  <div class="container-fluid">
+    <nav style=" --bs-breadcrumb-divider: '>'; " aria-label="breadcrumb">
+      <ol class="breadcrumb w-100 border-bottom pb-3">
+        <li class="breadcrumb-item">Room</li>
+        <li
+          class="breadcrumb-item active text-capitalize"
+          aria-current="page"
+        >List room</li>
+      </ol>
+    </nav>
+  </div>
+  <div class="container d-flex justify-content-end mt-5">
+    <a
+      class="btn text-white px-5 rounded-pill fw-bold"
+      style="background-color: #0099ff;"
+      href="/createRoom"
+    >Create</a>
+  </div>
+  <div class="container-fluid d-flex justify-content-evenly flex-wrap me-5">
+    {{#if data}}
+      {{#each data}}
+        <div class="card text-center my-5 me-md-5" style="width: 24rem;">
+          <div class="card-header">
+            MT-{{roomID}}
+          </div>
+          <div class="card-body d-flex justify-content-between">
+            <div class="left d-flex align-items-start flex-column">
+              <h6 class="card-title text-capitalize">name </h6>
+              <p class="card-text text-capitalize">capacity </p>
+              <p class="card-text text-capitalize">facility </p>
+            </div>
+            <div class="right d-flex align-items-start flex-column">
+              <h6 class="card-title">: {{name}}</h6>
+              <p class="card-text text-capitalize">: {{capacity}}</p>
+              <p class="card-text text-capitalize">: {{facility}}</p>
+            </div>
+          </div>
+
+        </div>
+      {{/each}}
+    {{else}}
+      <h5 class="mt-5 text-center">Maaf belum ada data booking hari ini !</h5>
+    {{/if}}
+
+  </div>
+</main>

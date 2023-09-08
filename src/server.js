@@ -16,7 +16,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 //set engine
-app.set(express.static(path.join(__dirname, "../public")));
+app.use("/images", express.static(path.join(__dirname, "../public")));
 app.set("views", path.join(__dirname, "/views"));
 app.set("view engine", "handlebars");
 app.engine(

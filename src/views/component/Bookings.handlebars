@@ -1,0 +1,69 @@
+<main class="w-100 min-vh-100 mt-5 position-relative" style="top:15px">
+  <div class="container-fluid">
+    <nav style=" --bs-breadcrumb-divider: '>'; " aria-label="breadcrumb">
+      <ol class="breadcrumb w-100 border-bottom pb-3">
+        <li class="breadcrumb-item">Booking</li>
+        <li
+          class="breadcrumb-item active text-capitalize"
+          aria-current="page"
+        >all booking</li>
+      </ol>
+    </nav>
+  </div>
+  <div class="container-fluid my-4 d-flex justify-content-end">
+    <a
+      class="btn text-white px-5 rounded-pill fw-bold"
+      style="background-color: #0099ff;"
+      href="/createBooking"
+    >Create</a>
+  </div>
+  <div class="container-fluid table-responsive mb-4" style="font-size: 13px;">
+    <table class="table table-bordered table-hover table-striped">
+      <thead>
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">Title</th>
+          <th scope="col">Description</th>
+          <th scope="col">Room</th>
+          <th scope="col">Start</th>
+          <th scope="col">End</th>
+          <th scope="col">Status</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+      {{#each data}}
+        <tbody>
+          <tr>
+            <td>MT-{{bookingID}}</td>
+            <td>{{title}}</td>
+            <td>{{description}}</td>
+            <td>{{room}}</td>
+            <td> {{moment start format="DD-MM-YYYY | HH:mm"}}</td>
+            <td> {{moment end format="DD-MM-YYYY | HH:mm"}}</td>
+            <td>{{#if isCompleted}} Done {{else}} Not Done {{/if}}</td>
+            <td class="d-flex justify-content-evenly flex-wrap"><button
+                class="btn btn-outline-warning text-black"
+              >Edit</button><button
+                class="btn btn-outline-danger"
+              >Delete</button></td>
+
+          </tr>
+        </tbody>
+      {{/each}}
+    </table>
+  </div>
+  <nav aria-label="Page navigation">
+    <ul class="pagination justify-content-center">
+      <li class="page-item">
+        <a class="page-link">Previous</a>
+      </li>
+      <li class="page-item"><a class="page-link" href="#">1</a></li>
+      <li class="page-item active"><a class="page-link" href="#">2</a></li>
+      <li class="page-item"><a class="page-link" href="#">3</a></li>
+      <li class="page-item">
+        <a class="page-link" href="#">Next</a>
+      </li>
+    </ul>
+  </nav>
+
+</main>

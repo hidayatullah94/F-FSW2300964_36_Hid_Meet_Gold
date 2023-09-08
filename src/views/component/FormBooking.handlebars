@@ -1,0 +1,88 @@
+<main class="w-100 min-vh-100 mt-5 position-relative" style="top:15px">
+  <div class="container-fluid">
+    <nav style=" --bs-breadcrumb-divider: '>'; " aria-label="breadcrumb">
+      <ol class="breadcrumb w-100 border-bottom pb-3">
+        <li class="breadcrumb-item">Booking</li>
+        <li
+          class="breadcrumb-item active text-capitalize"
+          aria-current="page"
+        >Create booking</li>
+      </ol>
+    </nav>
+  </div>
+  <div class="container my-4 d-flex justify-content-start">
+    <a
+      class="btn text-white px-5 rounded-pill fw-bold"
+      style="background-color: #0099ff;"
+      onclick="history.back()"
+    >Back</a>
+  </div>
+  <div class="container">
+    <div class="card px-5 py-5">
+      <form>
+        <div class="mb-3">
+          <label for="title" class="form-label text-capitalize">title meeting</label>
+          <input
+            type="text"
+            class="form-control rounded-pill"
+            id="title"
+            aria-describedby="title"
+            required="true"
+          />
+        </div>
+        <div class="mb-3">
+          <label
+            for="description"
+            class="form-label text-capitalize"
+          >description meeting</label>
+          <input
+            type="text"
+            class="form-control rounded-pill"
+            id="description"
+            aria-describedby="description"
+            required="true"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="room" class="form-label text-capitalize">room meeting</label>
+          <select
+            class="form-select rounded-pill"
+            aria-label="Default select example"
+            required="true"
+          >
+            <option selected disabled>Choose Room</option>
+            {{#each data}}
+              <option value={{name}}>{{name}}</option>
+            {{/each}}
+          </select>
+        </div>
+        <div class="row mb-3">
+          <div class="col">
+            <label for="start" class="form-label text-capitalize">Start meeting</label>
+            <input
+              type="datetime-local"
+              class="form-control rounded-pill"
+              required="true"
+            />
+          </div>
+          <div class="col">
+            <label for="end" class="form-label text-capitalize">end meeting</label>
+            <input
+              type="datetime-local"
+              class="form-control rounded-pill"
+              placeholder="Last name"
+              aria-label="Last name"
+              required="true"
+            />
+          </div>
+        </div>
+        <button
+          class="btn text-white px-5 rounded-pill fw-bold w-100 mt-4"
+          style="background-color: #0099ff;"
+          type="Submit"
+        >Submit</button>
+
+      </form>
+    </div>
+  </div>
+</main>
